@@ -2,8 +2,9 @@
 ## Basics data structures
 
 - ###### [Linked List](#linked_list)
-- ###### [Queue](#queue_1)
-- ###### [Stack](#stack_1)
+- ###### [Queue](#Queue)
+- ###### [Stack](#Stack)
+- ###### [Binary Tree](#binary_tree)
 
 #### linked_list
 ![](src/linked_list.png)
@@ -88,7 +89,7 @@ if __name__ == '__main___':
 ```
 
 
-#### queue_1
+#### Queue
 ![](src/queue.png)
 ###### implementation
 
@@ -236,7 +237,7 @@ if __name__ == '__main___':
 
 ```
 
-#### stack_2
+#### Stack
 ![](src/stack.png)
 
 ###### implementation
@@ -379,5 +380,124 @@ if __name__ == '__main__':
     
     print(len(stack))
     
+
+```
+
+#### binary_tree
+![](src/binary_tree.png)
+
+###### implementation
+
+```python
+class BinaryTree:
+    """
+    This class is a binary tree implementation.
+
+    Don't modify class or method names, just implement methods that currently raise
+    a NotImplementedError!
+    """
+
+    def __init__(self):
+        self.__root = None
+
+    def get_root(self):
+        return self.__root
+
+    def add(self, node):
+        # The root is None, so set the root to be the new Node.
+        if not self.__root:
+            self.__root = node
+        else:
+            # Start iterating over the tree.
+            marker = self.__root
+            while marker:
+                if node.value == marker.value:
+                    raise ValueError("A node with that value already exists.")
+                elif node.value > marker.value:
+                    if not marker.get_right():
+                        marker.set_right(node)
+                        return
+                    else:
+                        marker = marker.get_right()
+                else:
+                    if not marker.get_left():
+                        marker.set_left(node)
+                        return
+                    else:
+                        marker = marker.get_left()
+
+    def find(self, value):
+        marker = self.__root
+        while marker:
+            if value == marker.value:
+                return marker
+            elif value > marker.value:
+                marker = marker.get_right()
+            else:
+                marker = marker.get_left()
+        raise LookupError("A node with value {} was not found.".format(value))
+
+    def print_inorder(self):
+        self.__print_inorder_r(self.__root)
+
+    def __print_inorder_r(self, current_node):
+        if not current_node:
+            return
+        self.__print_inorder_r(current_node.get_left())
+        print(current_node.print_details())
+        self.__print_inorder_r(current_node.get_right())
+
+
+class Node:
+    """
+    This Node class has been created for you.
+    It contains the necessary properties for the solution, which are:
+    - text
+    - next
+    """
+
+    def __init__(self, data, value):
+        self.data = data
+        self.value = value
+        self.__left = None
+        self.__right = None
+
+    def set_right(self, node):
+        if isinstance(node, Node) or node is None:
+            self.__right = node
+        else:
+            raise TypeError("The 'right' node must be of type Node or None.")
+
+    def set_left(self, node):
+        if isinstance(node, Node) or node is None:
+            self.__left = node
+        else:
+            raise TypeError("The 'left' node must be of type Node or None.")
+
+    def get_right(self):
+        return self.__right
+
+    def get_left(self):
+        return self.__left
+
+    def print_details(self):
+        print("{}: {}".format(self.value, self.data))
+
+
+if __name__ == '__main__':
+    names = (("Jose", 2), ("Rolf", 1), ("Anna", 3))
+    nodes = [Node(name, value) for name, value in names]
+    binary_tree = BinaryTree()
+
+    for node in nodes:
+        binary_tree.add(node)
+
+    print(binary_tree.get_root().data)
+    print(binary_tree.get_root().get_left().data)
+    print(binary_tree.get_root().get_right().data)
+    
+    for i in range(0, len(nodes)):
+        print(nodes[i].value)
+        print(binary_tree.find(nodes[i].value).data)
 
 ```
