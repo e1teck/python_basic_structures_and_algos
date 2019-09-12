@@ -2,8 +2,8 @@
 ## Basics data structures
 
 - ###### [Linked List](#linked_list)
-- ###### [Queue](#queue)
-- ###### [Stack](#stack)
+- ###### [Queue](#queue_1)
+- ###### [Stack](#stack_1)
 
 #### linked_list
 ![](src/linked_list.png)
@@ -88,7 +88,7 @@ if __name__ == '__main___':
 ```
 
 
-#### queue
+#### queue_1
 ![](src/queue.png)
 ###### implementation
 
@@ -236,7 +236,7 @@ if __name__ == '__main___':
 
 ```
 
-#### stack
+#### stack_2
 ![](src/stack.png)
 
 ###### implementation
