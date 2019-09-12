@@ -24,4 +24,9 @@
 
 #### definition_rules
 ![](src/bigo_notation_definition_rules.jpg)
+![](src/bigo_notation_definition_examples_1.jpg)
+![](src/bigo_notation_definition_examples_2.jpg)
+![](src/bigo_notation_definition_rules_2.jpg)
+![](src/bigo_notation_definition_examples_3.jpg)
+
 
