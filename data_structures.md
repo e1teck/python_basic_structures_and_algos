@@ -6,4 +6,4 @@
 
 
 #### linked_list
-![](https://github.com/e1teck//python_basic_structures_and_algos/src/linked_list.png)
+![](src/linked_list.png)
