@@ -2,13 +2,13 @@
 ## Basics data structures
 
 - ###### [Linked List](#linked_list)
-
+- ###### [Queue](#queue)
 
 
 #### linked_list
 ![](src/linked_list.png)
 
-#### implementation
+###### implementation
 
 ```python
 class Node:
@@ -85,5 +85,152 @@ if __name__ == '__main___':
     for i in range(len(nodes)-1, -1, -1):
         print(marker.name)
         marker = marker.get_next()
+```
+
+
+#### queue
+![](src/queue.png)
+###### implementation
+
+```python
+class LinkedList:
+    """
+    You should implement the methods of this class which are currently
+    raising a NotImplementedError!
+    Don't change the name of the class or any of the methods.
+    """
+    def __init__(self):
+        self.__root = None
+
+    def get_root(self):
+        return self.__root
+
+    def add_start_to_list(self, node):
+        if self.__root:
+            node.set_next(self.__root)
+        self.__root = node
+
+    def remove_end_from_list(self):
+        marker = self.__root
+
+        # Especially delete the root if it by itself.
+        if not marker.get_next():
+            self.__root = None
+            return marker
+
+        # Iterate over each Node in this list
+        while marker:
+            # Get the next node
+            following_node = marker.get_next()
+            if following_node:
+                # If the next Node's next Node is None, it means the current marker is the
+                # second-to-last Node (there is only one more after it).
+                if not following_node.get_next():
+                    # Make the marker's next = None so the very last Node is removed.
+                    marker.set_next(None)
+                    return following_node
+            marker = marker.get_next()
+
+    def print_list(self):
+        marker = self.__root
+        while marker:
+            marker.print_details()
+            marker = marker.get_next()
+
+    def find(self, name):
+        marker = self.__root
+        while marker:
+            if marker.name == name:
+                return marker
+            marker = marker.get_next()
+        raise LookupError("Name {} not found in the linked list.".format(name))
+
+    def size(self):
+        marker = self.__root
+        count = 0
+        while marker:
+            count += 1
+            marker = marker.get_next()
+        return count
+        
+        
+
+class LinkedQueue:
+    """
+    This class is a queue wrapper around a LinkedList.
+
+    This means that methods like `add_to_list_start` should now be called `push`, for example.
+
+    Don't modify class or method names, just implement methods that currently raise
+    a NotImplementedError!
+    """
+
+    def __init__(self):
+        self.__linked_list = LinkedList()
+
+    def push(self, node):
+        self.__linked_list.add_start_to_list(node)
+
+    def pop(self):
+        return self.__linked_list.remove_end_from_list()
+
+    def find(self, name):
+        return self.__linked_list.find(name)
+
+    def print_details(self):
+        self.__linked_list.print_list()
+
+    def __len__(self):
+        return self.__linked_list.size()
+
+class Node:
+    """
+    This Node class has been created for you.
+    It contains the necessary properties for the solution, which are:
+    - name
+    - phone
+    - next
+    """
+
+    def __init__(self, name, phone):
+        self.name = name
+        self.phone = phone
+        self.__next = None
+
+    def set_next(self, node):
+        if isinstance(node, Node) or node is None:
+            self.__next = node
+        else:
+            raise TypeError("The 'next' node must be of type Node or None.")
+
+    def get_next(self):
+        return self.__next
+
+    def print_details(self):
+        print("{} ({})".format(self.name, self.phone))
+        
+if __name__ == '__main___':
+    names = ("Jose", "1234-356"), ("Rolf", "2345-1-53563-2"), ("Anna", "345623-16779-3")
+    nodes = [Node(name, phone) for name, phone in names]
+    linked_list = LinkedList()
+    
+    for node in nodes:
+        linked_list.add_start_to_list(node)
+    
+    marker = linked_list.get_root()
+    for i in range(len(nodes)-1, -1, -1):
+        print(marker.name)
+        marker = marker.get_next()
+    
+    node = Node("Jose", "123-456-7890")
+    queue = LinkedQueue()
+    
+    queue.push(node)
+    print(len(queue))
+    
+    popped = queue.pop()
+    
+    print(popped.name)
+    print(len(queue))
 
 ```
