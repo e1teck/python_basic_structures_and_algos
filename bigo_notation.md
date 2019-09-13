@@ -1,9 +1,8 @@
 ## Big O notation
 
 - ###### [Graphs](#graphs)
-- ###### [Definition](#definition)
+- ###### [Definition](#basic_definitions)
 - ###### [Definition Rules](#definition_rules)
-- ###### [Binary Tree](#binary_tree)
 
 
 #### graphs
@@ -18,7 +17,7 @@
 ![](src/bigo_notation_7.jpg)
 
 
-#### definition
+#### basic_definitions
 ![](src/bigo_notation_definition.jpg)
 ![](src/bigo_notation_definition_2.jpg)
 
