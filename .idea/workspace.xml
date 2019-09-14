@@ -4,7 +4,6 @@
     <list default="true" id="23d99fab-4d7a-414a-ab11-3e0f2640b718" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basic_algos.md" beforeDir="false" afterPath="$PROJECT_DIR$/basic_algos.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bigo_notation.md" beforeDir="false" afterPath="$PROJECT_DIR$/bigo_notation.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +53,8 @@
       <option name="presentableId" value="Default" />
       <updated>1568259907739</updated>
       <workItem from="1568397060735" duration="95000" />
-      <workItem from="1568406129641" duration="5864000" />
+      <workItem from="1568406129641" duration="6314000" />
+      <workItem from="1568448111626" duration="1789000" />
     </task>
     <servers />
   </component>
@@ -66,7 +66,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
