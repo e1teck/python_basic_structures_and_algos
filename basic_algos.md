@@ -5,7 +5,10 @@
 - ###### [Find closest value in binary search tree](#find_closest_value_in_bst)
 - ###### [Depth first search](#depth_first_search)
 - ###### [Linked List Construction](#linked_list_construction)
-- ###### [Nth fibonacci](#nth_fibonacci)
+- ###### [Nth fibonacci](#nth_fibonacci_algo)
+- ###### [Find Three largest numbers](#find_three_largest_numbers)
+- ###### [Binary search](#binary_search_algo)
+- ###### [Insertion sort](#insertion_sort_algo)
 
 
 #### two_number_sum
@@ -105,7 +108,7 @@ class Node:
 ```
 
 
-####linked_list_construction
+#### linked_list_construction
 ![](src/algos_linked_list.png)
 
 ```python
@@ -203,7 +206,7 @@ class DoublyLinkedList:
         node.next = None
 ```
 
-####nth_fibonacci
+#### nth_fibonacci_algo
 ![](src/algos_nth_fibonacci.png)
 
 ![](src/algos_nth_fibonacci_2.png)
@@ -240,4 +243,82 @@ def get_nth_fib(n):
         last_two[1] = next_fib
         counter += 1
     return last_two[1] if n > 1 else last_two[0]
+```
+
+#### find_three_largest_numbers
+```python
+# O(n) time | O(1)
+def find_three_largest_numbers(array):
+    three_largest = [None, None, None]
+    for num in array:
+        update_largest(three_largest, num)
+    return three_largest
+
+def update_largest(three_largest, num):
+    if three_largest[2] is None or num > three_largest[2]:
+        shift_and_update(three_largest, num, 2)
+    elif three_largest[1] is None or num > three_largest[1]:
+        shift_and_update(three_largest, num, 1)
+    elif three_largest[0] is None or num > three_largest[0]:
+        shift_and_update(three_largest, num, 0)
+
+def shift_and_update(array, num, idx):
+    for i in range(idx + 1):
+        if i == idx:
+            array[i] = num
+        else:
+            array[i] = array[i + 1]
+```
+
+
+#### binary_search_algo
+
+```python
+# O(log(n)) time | O(log(n)) space
+def binary_search(array, target):
+    return binary_search_helper(array, target, 0, len(array) - 1)
+
+def binary_search_helper(array, target, left, right):
+    if left > right:
+        return -1
+    middle = (left + right) // 2
+    potential_match = array[middle]
+    if target == potential_match:
+        return middle
+    elif target < potential_match:
+        return binary_search_helper(array, target, left, middle - 1)
+    else:
+        return binary_search_helper(array, target, middle + 1, right)
+```
+```python
+# O(log(n)) time | O(1) space
+def binary_search(array, target):
+    return binary_search_helper(array, target, 0, len(array) - 1)
+
+def binary_search_helper(array, target, left, right):
+    while left <= right:
+        middle = (left + right) // 2
+        potential_match = array[middle]
+        if target == potential_match:
+            return middle
+        elif target < potential_match:
+            right = middle - 1
+        else:
+            left = middle + 1
+    return -1
+```
+
+#### insertion_sort_algo
+
+```python
+# O(n^2) time | O(1) space
+def insertion_sort(array):
+    for i in range(1, len(array)):
+        j = i
+        while j > 0 and array[j] < array[j - 1]:
+            swap(j, j - 1, array)
+            j -= 1
+
+def swap(i, j, array):
+    array[i], array[j] = array[j], array[i]
 ```
