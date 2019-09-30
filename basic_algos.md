@@ -9,6 +9,24 @@
 - ###### [Find Three largest numbers](#find_three_largest_numbers)
 - ###### [Binary search](#binary_search_algo)
 - ###### [Insertion sort](#insertion_sort_algo)
+- ###### [Bubble sort X](#bubble_sort_algo)
+- ###### [Selection sort X](#selection_sort_algo)
+- ###### [Palindrome check X](#palindrome_check_algo)
+- ###### [Caesar cipher encryptor X](#caesar_cipher_encryptor_algo)
+
+### Medium
+- ###### [Levenshtein distance](#levenshtein_distance)
+
+### Hard
+- ###### [Four number sum](#four_number_sum)
+- ###### [Subarray sort](#subarray_sort)
+- ###### [Largest range](#largest_range)
+...
+
+
+### Very Hard
+...
+- ###### [Longest increasing subsequence](#longest_increasing_subsequence)
 
 
 #### two_number_sum
@@ -321,4 +339,96 @@ def insertion_sort(array):
 
 def swap(i, j, array):
     array[i], array[j] = array[j], array[i]
+```
+
+
+
+#### levenshtein_distance
+![](src/algos_levenshtein_distance.png)
+```python
+# O(nm) time | O(nm) space
+def levenshteinDistance(stri, str2):
+    edits = [[x for x in range(len(str1) + 1)] for y in range(len(str2) + 1)]
+    for i in range(1, len(str2) + 1):
+        edits[i][0] = edits[i - 1][0] + 1
+    for i in range(1, len(str2) + 1):
+        for j in range(1, len(stri) + 1):
+            if str2[i - 1] == stri[j - 1]:
+                edits[i][j] = edits[i - 1][j - 1]
+            else:
+                edits[i][j] = 1 + min(edits[i - 1][j - 1], edits[i][j - 1], edits[i - 1][j])
+    return edits[-1][-1]
+```
+
+```python
+# O(nm) time | O(min(n, m)) space
+def levenshteinDistance(str1, str2):
+    small = str1 if len(str1) < len(str2) else str2
+    big = str1 if len(str1) >= len(str2) else str2
+    evenEdits = [x for x in range(len(small) + 1)]
+    oddEdits = [None for x in range(len(small) + 1)]
+    for i in range(1, len(big) + 1):
+        if i % 2 == 1:
+            currentEdits = oddEdits
+            previousEdits = evenEdits
+        else:
+            currentEdits = evenEdits
+            previousEdits = oddEdits
+        currentEdits[0] = i
+        for j in range(1, len(small) + 1):
+            if big[i - 1] == small[j - 1]:
+                currentEdits[j] = previousEdits[j - 1]
+            else:
+                currentEdits[j] = 1 + min(previousEdits[j - 1], previousEdits[j], currentEdits[j - 1])
+
+    return evenEdits[-1] if len(big) % 2 == 0 else oddEdits[-1]
+```
+
+
+#### longest_increasing_subsequence
+```python
+# # 0(nA2) time | 0(n) space
+# def longestlncreasingSubsequence(array): 
+#     sequences = [None for x in array]
+#     lengths = [1 for x in array] 
+#     maxLengthIdx = 0
+#     for i in range(Len(array)):
+#         currentNum = array[i]
+#         for j in range(0, i): 
+#             otherNum = array[j]
+#             if otherNum < currentNum and lengths[j] + 1 >= lengths[i]:
+#                 lengths[i] = lengths[j] + 1
+#                 sequences[i] = j
+#         if lengths[i] >= lengths[maxLengthIdx]:
+#             maxLengthIdx = i
+#     return buiLdSequence(array, sequences, maxLengthIdx)
+
+# 0(nlogn) 1 0(n) space
+def longestIncreasingSubsequence(array):
+    sequences = [None for x in array]
+    indices = [None for x in range(len(array) + 1)]
+    length = 0
+    for i, num in enumerate(array):
+       newLength = binarySearch(1, length, indices, array, num)
+       sequences[i] = indices[newLength - 1]
+       indices[newLength] = i
+       length = max(length, newLength)
+    return buildSequence(array, sequences, indices[length])
+
+def binarySearch(startIdx, endIdx, indices, array, num): 
+    if startIdx > endIdx:
+      return startIdx
+    middleIdx = (startIdx + endIdx) // 2
+    if array[indices[middleIdx]] < num:
+        startIdx = middleIdx + 1
+    else:
+        endIdx = middleIdx - 1
+    return binarySearch(startIdx, endIdx, indices, array, num)
+
+def buildSequence(array, sequences, currentIdx): 
+    sequence = []
+    while currentIdx is not None: 
+        sequence.append(array[currentIdx]) 
+        currentIdx = sequences[currentIdx]
+    return list(reversed(sequence))
 ```
