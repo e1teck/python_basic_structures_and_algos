@@ -1,3 +1,4 @@
+- ###### [Python basics](python_basics.md)
 
 - ###### [Basics data structures](data_structures.md)
 
