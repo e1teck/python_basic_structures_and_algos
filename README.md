@@ -8,3 +8,5 @@
 - ###### [Async with python](async.md)
 
 - ###### [Linear algebra](linear_algebra.md)
+
+- ###### [NumPy begining](numpy_begining.md)
