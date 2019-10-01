@@ -6,3 +6,5 @@
 - ###### [Basics algos with python](basic_algos.md)
 
 - ###### [Async with python](async.md)
+
+- ###### [Linear algebra](linear_algebra.md)
