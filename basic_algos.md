@@ -466,7 +466,7 @@ def getNewLetter(letter, key, alphabet):
     return alphabet[newLetterCode] if newLetterCode <= 25 else alphabet[-1 + newLetterCode % 25]
 ```
 
-#palindrome_check_algo
+#### palindrome_check_algo
 ```python
 # O(n^2) time | O(n) space
 def isPalindrome(string):
