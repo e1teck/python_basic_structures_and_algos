@@ -11,7 +11,7 @@
 - ###### [Insertion sort](#insertion_sort_algo)
 - ###### [Bubble sort X](#bubble_sort_algo)
 - ###### [Selection sort X](#selection_sort_algo)
-- ###### [Palindrome check X](#palindrome_check_algo)
+- ###### [Palindrome check](#palindrome_check_algo)
 - ###### [Caesar cipher encryptor](#caesar_cipher_encryptor_algo)
 
 ### Medium
@@ -464,4 +464,40 @@ def caesarCipherEncryptor(string, key):
 def getNewLetter(letter, key, alphabet):
     newLetterCode = alphabet.index(letter) + key
     return alphabet[newLetterCode] if newLetterCode <= 25 else alphabet[-1 + newLetterCode % 25]
+```
+
+#palindrome_check_algo
+```python
+# O(n^2) time | O(n) space
+def isPalindrome(string):
+    reversedString = ""
+    for i in reversed(range(len(string))):
+        reversedString += string[i]
+    return string == reversedString
+```
+```python
+# O(n) time| O(n) space
+def isPalindrome(string):
+    reversedChars = []
+    for i in reversed(range(len(string))):
+        reversedChars.append(string[i])
+    return string == "".join(reversedChars)
+```
+```python
+# O(n) time | O(n) space
+def isPalindrome(string, i=0):
+    j = len(string) - 1 -i
+    return True if i >= j else string[i] == string[j] and isPalindrome(string, i + 1)
+```
+```python
+# O(n) time | O(1) space
+def isPalindrome(string):
+    leftIdx = 0
+    rightIdx = len(string) - 1
+    while leftIdx < rightIdx:
+        if string[leftIdx] != string[rightIdx]:
+            return False
+        leftIdx += 1
+        rightIdx -= 1
+    return True
 ```
