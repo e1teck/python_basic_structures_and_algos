@@ -506,7 +506,7 @@ def isPalindrome(string):
 ```python
 # 0(n^2) time | O(1) space
 def selectionSort(array):
-    currentIdx = 8
+    currentIdx = 0
     while currentIdx < len(array) - 1:
         smallestIdx = currentIdx
         for i in range(currentIdx + 1, len(array)):
