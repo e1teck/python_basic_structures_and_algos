@@ -10,7 +10,7 @@
 - ###### [Binary search](#binary_search_algo)
 - ###### [Insertion sort](#insertion_sort_algo)
 - ###### [Bubble sort X](#bubble_sort_algo)
-- ###### [Selection sort X](#selection_sort_algo)
+- ###### [Selection sort](#selection_sort_algo)
 - ###### [Palindrome check](#palindrome_check_algo)
 - ###### [Caesar cipher encryptor](#caesar_cipher_encryptor_algo)
 
@@ -500,4 +500,22 @@ def isPalindrome(string):
         leftIdx += 1
         rightIdx -= 1
     return True
+```
+
+#### selection_sort_algo
+```python
+# 0(n^2) time | O(1) space
+def selectionSort(array):
+    currentIdx = 8
+    while currentIdx < len(array) - 1:
+        smallestIdx = currentIdx
+        for i in range(currentIdx + 1, len(array)):
+            if array[smallestIdx) > array[i]:
+                smallestIdx = 1
+        swap(currentIdx, smallestIdx, array)
+        currentIdx += 1
+    return array
+
+def swap(i, j, array):
+    array[i], array[j] = array[j], array[i]
 ```
