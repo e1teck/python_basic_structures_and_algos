@@ -9,7 +9,7 @@
 - ###### [Find Three largest numbers](#find_three_largest_numbers)
 - ###### [Binary search](#binary_search_algo)
 - ###### [Insertion sort](#insertion_sort_algo)
-- ###### [Bubble sort X](#bubble_sort_algo)
+- ###### [Bubble sort](#bubble_sort_algo)
 - ###### [Selection sort](#selection_sort_algo)
 - ###### [Palindrome check](#palindrome_check_algo)
 - ###### [Caesar cipher encryptor](#caesar_cipher_encryptor_algo)
@@ -514,6 +514,24 @@ def selectionSort(array):
                 smallestIdx = 1
         swap(currentIdx, smallestIdx, array)
         currentIdx += 1
+    return array
+
+def swap(i, j, array):
+    array[i], array[j] = array[j], array[i]
+```
+#### bubble_sort_algo
+```python
+# O(n^2) time | 0(1) space
+def bubbleSort (array):
+    isSorted = False
+    counter = 0
+    while not isSorted:
+        isSorted = True
+        for i in range(len(array) - 1 - counter):
+            if array[i] > array[i + 1]:
+                swap(i, i + 1, array)
+                isSorted = False
+        counter += 1
     return array
 
 def swap(i, j, array):
