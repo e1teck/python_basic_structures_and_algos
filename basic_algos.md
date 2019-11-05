@@ -19,6 +19,7 @@
 - ###### [Smallest Difference](#smallest_difference)
 - ###### [BST contruction](#binary_search_tree_contruction)
 - ###### [Validate BST](#validate_binary_search_tree)
+- ###### [BST Traversal](#bst_traversal)
 - ###### [Levenshtein distance](#levenshtein_distance)
 
 ### Hard
@@ -687,4 +688,30 @@ def validateBstHelper(tree, minValue, maxValue):
         return False
     leftIsValid = validateBstHelper(tree.left, minValue, tree.value)
     return leftIsValid and validateBstHelper(tree.right, tree.value, maxValue)
+```
+#### bst_traversal
+```python
+# O(n) time | O(n) space
+def inOrderTraverse(tree, array):
+    if tree is not None:
+        inOrderTraverse(tree.left, array)
+        array.append(tree.value)
+        inOrderTraverse(tree.right, array)
+    return array
+
+# O(n) time | O(n) space
+def preOrderTraverse(tree, array):
+    if tree is not None:
+        array.append(tree.value)
+        preOrderTraverse(tree.left, array)
+        preOrderTraverse(tree.right, array)
+    return array
+
+# O(n) time | O(n) space
+def postOrderTraverse(tree, array):
+    if tree is not None:
+        postOrderTraverse(tree.left, array)
+        postOrderTraverse(tree.right, array)
+        array.append(tree.value)
+    return array
 ```
