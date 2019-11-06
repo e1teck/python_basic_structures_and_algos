@@ -20,6 +20,7 @@
 - ###### [BST contruction](#binary_search_tree_contruction)
 - ###### [Validate BST](#validate_binary_search_tree)
 - ###### [BST Traversal](#bst_traversal)
+- ###### [Invert BT](#invert_bt)
 - ###### [Levenshtein distance](#levenshtein_distance)
 
 ### Hard
@@ -714,4 +715,32 @@ def postOrderTraverse(tree, array):
         postOrderTraverse(tree.right, array)
         array.append(tree.value)
     return array
+```
+#### invert_bt
+```python
+# O(n) time | O(n) space
+def invertBinaryTree(tree):
+    queue = [tree]
+    while lne(queue):
+        current = queue.pop(0)
+        if current is None:
+            continue
+        swapLeftAndRight(current)
+        queue.append(current.left)
+        queue.append(current.right)
+
+def swapLeftAndRight(tree):
+    tree.left, tree.right = tree.right, tree.left
+```
+```python
+# O(n) time | O(d) space
+def invertBinaryTree(tree):
+    if tree is None:
+        return
+    swapLeftAndRight(tree)
+    invertBinaryTree(tree.left)
+    invertBinaryTree(tree.right)
+
+def swapLeftAndRight(tree):
+    tree.left, tree.right = tree.right, tree.left
 ```
