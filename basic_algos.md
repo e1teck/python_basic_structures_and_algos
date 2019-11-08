@@ -22,6 +22,7 @@
 - ###### [BST Traversal](#bst_traversal)
 - ###### [Invert BT](#invert_bt)
 - ###### [Max subset sum no adjacent](#max_subset_sum_no_adjacent)
+- ###### [Min number of coins for change](#min_number_of_coins_for_change)
 - ###### [Levenshtein distance](#levenshtein_distance)
 
 ### Hard
@@ -774,4 +775,16 @@ def maxSubsetSumNoAdjacent(array):
         second = first
         first = current
     return first
+```
+#### min_number_of_coins_for_change
+```python
+# O(nd) time | O(n) space
+def minNumberOfCoinsForChange(n, denoms):
+    numOfCoins = [float("inf") for amount in range(n + 1)]
+    numOfCoins[0] = 0
+    for denom in denoms:
+        for amount in range(len(numOfCoins)):
+            if denom <= amount:
+                numOfCoins[amount] = min(numOfCoins[amount], 1 + numOfCoins[amount - denom])
+    return numOfCoins[n] if numOfCoins[n] != float("inf") else - 1
 ```
