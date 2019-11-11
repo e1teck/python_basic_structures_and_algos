@@ -22,6 +22,7 @@
 - ###### [BST Traversal](#bst_traversal)
 - ###### [Invert BT](#invert_bt)
 - ###### [Max subset sum no adjacent](#max_subset_sum_no_adjacent)
+- ###### [Number of ways to make change](#number_of_ways_to_make_change)
 - ###### [Min number of coins for change](#min_number_of_coins_for_change)
 - ###### [Levenshtein distance](#levenshtein_distance)
 
@@ -787,4 +788,16 @@ def minNumberOfCoinsForChange(n, denoms):
             if denom <= amount:
                 numOfCoins[amount] = min(numOfCoins[amount], 1 + numOfCoins[amount - denom])
     return numOfCoins[n] if numOfCoins[n] != float("inf") else - 1
+```
+#### number_of_ways_to_make_change
+```python
+# O(nd) time | O(n) space
+def numberOfWaysToMakeChange(n, denoms):
+    ways = [0 for amount in range(n + 1)]
+    ways[0] = 1
+    for denom in denoms:
+        for amount in range(1, n + 1)
+            if denom <= amount:
+                ways[amount] += ways[amount - denom]
+    return ways[n]
 ```
