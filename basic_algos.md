@@ -25,6 +25,7 @@
 - ###### [Number of ways to make change](#number_of_ways_to_make_change)
 - ###### [Min number of coins for change](#min_number_of_coins_for_change)
 - ###### [Levenshtein distance](#levenshtein_distance)
+- ###### [Kadane's Algorithm](#kadanes_algorithm)
 
 ### Hard
 - ###### [Four number sum](#four_number_sum)
@@ -800,4 +801,15 @@ def numberOfWaysToMakeChange(n, denoms):
             if denom <= amount:
                 ways[amount] += ways[amount - denom]
     return ways[n]
+```
+#### kadanes_algorithm
+```python
+# O(n) time | O(1) space
+def kadanesAlgorithm(array):
+    maxEndingHere = array[0]
+    maxSoFar = array[0]
+    for num in array[1:]:
+        maxEndingHere = max(num, maxEndingHere + num)
+        maxSoFar = max(maxSoFar, maxendingHere)
+    return maxSoFar
 ```
